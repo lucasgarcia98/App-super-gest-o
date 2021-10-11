@@ -17,3 +17,11 @@ Route::get('/', 'PrincipalController@principal');
 Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
+
+Route::get('/login', 'LoginController@login');
+
+Route::get('/clientes', 'ClientesController@clientes');
+
+Route::get('/fornecedores', 'FornecedoresController@fornecedores');
+
+Route::get('/produtos', 'ProdutosController@produtos');
