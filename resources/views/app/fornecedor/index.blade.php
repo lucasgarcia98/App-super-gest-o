@@ -18,17 +18,25 @@
 
 {{-- @unless Executa se o retorno for False --}}
 
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br>
-Status: {{ $fornecedores[0]['status'] }}
-<br>
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[1]['nome'] }}
+    <br>
 
-{{-- Executa se for true --}}
-@if($fornecedores[0]['status'] == 'S')
+    Status: {{ $fornecedores[1]['status'] }}
+    <br>
+
+    @isset($fornecedores[0]['cnpj'])
+        CNPJ: {{ $fornecedores[0]['cnpj'] }}
+    @endisset
+
+    <br>
+@endisset
+{{-- Executa se for true
+@if ($fornecedores[0]['status'] == 'S')
 Fornecedor ativo
-@endif 
+@endif --}}
 
-{{-- Executa se for false --}}
+{{-- Executa se for false
 @unless($fornecedores[0]['status'] == 'S') 
 Fornecedor inativo
-@endunless
+@endunless --}}
