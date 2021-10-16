@@ -17,7 +17,7 @@
 {{-- @if Executa se o retorno for True --}}
 
 {{-- @unless Executa se o retorno for False --}}
-
+{{-- 
 @isset($fornecedores)
     Fornecedor: {{ $fornecedores[1]['nome'] }}
     <br>
@@ -30,7 +30,7 @@
         {{-- $variavel testada não estiver definida (isset)
             ou
             $variavel testada possuir o valor null --}}
-    @endisset
+    {{-- @endisset
 
     CNPJ: {{ $fornecedores[1]['cnpj'] ?? '' }}
     <br>
@@ -49,7 +49,7 @@
         Estado não identificado
     @endswitch
     <br>
-@endisset
+@endisset --}}
 {{-- Executa se for true
 @if ($fornecedores[0]['status'] == 'S')
 Fornecedor ativo
@@ -70,3 +70,33 @@ Fornecedor inativo
 - false
 - array()
 - $var --}}
+
+{{-- Uso de for --}}
+{{-- @isset($fornecedores)
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+        <hr>
+    @endfor
+@endisset --}}
+
+{{-- Uso de While --}}
+@isset($fornecedores)
+    @php $i = 0 @endphp
+    @while(isset($fornecedores[$i]))
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+        <hr>
+        @php $i++ @endphp
+    @endwhile
+@endisset
