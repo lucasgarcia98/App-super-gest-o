@@ -137,11 +137,16 @@ Fornecedor inativo
 
 {{-- Para imprimir a tag de exibição do Blade, adicione o @ antes 
     @{{1}} vai imprimir
-        - {{1}}
-    --}}
-@isset($fornecedores)
+        - {{1}} --}}
 
-    @forelse($fornecedores1 as $indice => $fornecedor)
+{{-- Laço loop, está disponível só no Foreach e Forelse --}}
+
+{{-- @isset($fornecedores)
+
+    @forelse($fornecedores as $indice => $fornecedor) --}}
+{{-- Pega todas as funcionalidades disponíveis na variável $loop @dd($loop) --}}
+{{-- Iteração atual: {{ $loop->iteration }}
+        <br>
         Fornecedor: {{ $fornecedor['nome'] }}
         <br>
         Status: {{ $fornecedor['status'] }}
@@ -149,9 +154,35 @@ Fornecedor inativo
         CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
         <br>
         Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        <br>
+        @if ($loop->first)
+            primeira iteração do loop
+        @endif
+        @if ($loop->last)
+            ultima iteração do loop
+            <br>
+            Total de registros: {{ $loop->count }}
+        @endif
         <hr>
     @empty
         Não existem fornecedores cadastrados!!
     @endforelse
+
+@endisset --}}
+
+@isset($fornecedores)
+
+@forelse($fornecedores as $indice => $fornecedor)
+    Fornecedor: {{ $fornecedor['nome'] }}
+    <br>
+    Status: {{ $fornecedor['status'] }}
+    <br>
+    CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+    <br>
+    Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+    <hr>
+@empty
+    Não existem fornecedores cadastrados!!
+@endforelse
 
 @endisset
