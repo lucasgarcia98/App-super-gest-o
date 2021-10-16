@@ -86,7 +86,7 @@ Fornecedor inativo
 @endisset --}}
 
 {{-- Uso de While --}}
-@isset($fornecedores)
+{{-- @isset($fornecedores)
     @php $i = 0 @endphp
     @while(isset($fornecedores[$i]))
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
@@ -99,4 +99,20 @@ Fornecedor inativo
         <hr>
         @php $i++ @endphp
     @endwhile
+@endisset --}}
+
+{{-- Uso de Foreach --}}
+@isset($fornecedores)
+
+    @foreach($fornecedores as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
+        <br>
+        Status: {{ $fornecedor['status'] }}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        <hr>
+    @endforeach
+
 @endisset
