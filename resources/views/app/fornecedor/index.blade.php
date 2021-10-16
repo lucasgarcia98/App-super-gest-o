@@ -118,6 +118,27 @@ Fornecedor inativo
 
 {{-- Uso do Forelse
     Verifica se existe algum item no array, se não exister ele executa o que estiver dentro da instrução @empty --}}
+{{-- @isset($fornecedores)
+
+    @forelse($fornecedores1 as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
+        <br>
+        Status: {{ $fornecedor['status'] }}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        <hr>
+    @empty
+        Não existem fornecedores cadastrados!!
+    @endforelse
+
+@endisset --}}
+
+{{-- Para imprimir a tag de exibição do Blade, adicione o @ antes 
+    @{{1}} vai imprimir
+        - {{1}}
+    --}}
 @isset($fornecedores)
 
     @forelse($fornecedores1 as $indice => $fornecedor)
