@@ -20,6 +20,12 @@ class FornecedorController extends Controller
             ]
         ];
 
+        // condicional ternário
+        // condicao ? se verdade : se falso;
+        // $msg = isset($fornecedores[0]['cnpj']) ? 'CNPJ informado' : 'CNPJ não informado';
+
+        // echo $msg;
+
         return view('app.fornecedor.index', compact('fornecedores'));
     }
 }
