@@ -27,13 +27,27 @@
 
     @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não preenchido' }}
-        {{-- 
-            $variavel testada não estiver definida (isset)
+        {{-- $variavel testada não estiver definida (isset)
             ou
-            $variavel testada possuir o valor null
-            --}}
+            $variavel testada possuir o valor null --}}
     @endisset
 
+    CNPJ: {{ $fornecedores[1]['cnpj'] ?? '' }}
+    <br>
+    Telefone: {{ $fornecedores[1]['ddd'] ?? '' }} {{ $fornecedores[1]['telefone'] ?? '' }}
+    @switch($fornecedores[0]['ddd'])
+        @case('11')
+            São Paulo - SP
+        @break
+        @case('32')
+            Juiz de Fora - MG
+        @break
+        @case('85')
+            Fortaleza - CE
+        @break
+        @default
+        Estado não identificado
+    @endswitch
     <br>
 @endisset
 {{-- Executa se for true
@@ -55,6 +69,4 @@ Fornecedor inativo
 - null
 - false
 - array()
-- $var
-
---}}
+- $var --}}
