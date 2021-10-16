@@ -26,7 +26,12 @@
     <br>
 
     @isset($fornecedores[0]['cnpj'])
-        CNPJ: {{ $fornecedores[0]['cnpj'] }}
+        CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não preenchido' }}
+        {{-- 
+            $variavel testada não estiver definida (isset)
+            ou
+            $variavel testada possuir o valor null
+            --}}
     @endisset
 
     <br>
