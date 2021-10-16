@@ -40,3 +40,16 @@ Fornecedor ativo
 @unless($fornecedores[0]['status'] == 'S') 
 Fornecedor inativo
 @endunless --}}
+
+{{-- if(empty($variavel)) {} Retonar tru se a variável estiver vazia
+
+- ''
+- 0
+- 0.0
+- '0'
+- null
+- false
+- array()
+- $var
+
+--}}
