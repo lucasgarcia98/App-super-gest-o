@@ -17,8 +17,7 @@
 {{-- @if Executa se o retorno for True --}}
 
 {{-- @unless Executa se o retorno for False --}}
-{{-- 
-@isset($fornecedores)
+{{-- @isset($fornecedores)
     Fornecedor: {{ $fornecedores[1]['nome'] }}
     <br>
 
@@ -30,7 +29,7 @@
         {{-- $variavel testada não estiver definida (isset)
             ou
             $variavel testada possuir o valor null --}}
-    {{-- @endisset
+{{-- @endisset
 
     CNPJ: {{ $fornecedores[1]['cnpj'] ?? '' }}
     <br>
@@ -73,7 +72,7 @@ Fornecedor inativo
 
 {{-- Uso de for --}}
 {{-- @isset($fornecedores)
-    @for($i = 0; isset($fornecedores[$i]); $i++)
+    @for ($i = 0; isset($fornecedores[$i]); $i++)
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
         <br>
         Status: {{ $fornecedores[$i]['status'] }}
@@ -88,7 +87,7 @@ Fornecedor inativo
 {{-- Uso de While --}}
 {{-- @isset($fornecedores)
     @php $i = 0 @endphp
-    @while(isset($fornecedores[$i]))
+    @while (isset($fornecedores[$i]))
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
         <br>
         Status: {{ $fornecedores[$i]['status'] }}
@@ -102,9 +101,9 @@ Fornecedor inativo
 @endisset --}}
 
 {{-- Uso de Foreach --}}
-@isset($fornecedores)
+{{-- @isset($fornecedores)
 
-    @foreach($fornecedores as $indice => $fornecedor)
+    @foreach ($fornecedores as $indice => $fornecedor)
         Fornecedor: {{ $fornecedor['nome'] }}
         <br>
         Status: {{ $fornecedor['status'] }}
@@ -114,5 +113,24 @@ Fornecedor inativo
         Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
         <hr>
     @endforeach
+
+@endisset --}}
+
+{{-- Uso do Forelse
+    Verifica se existe algum item no array, se não exister ele executa o que estiver dentro da instrução @empty --}}
+@isset($fornecedores)
+
+    @forelse($fornecedores1 as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
+        <br>
+        Status: {{ $fornecedor['status'] }}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        <hr>
+    @empty
+        Não existem fornecedores cadastrados!!
+    @endforelse
 
 @endisset
